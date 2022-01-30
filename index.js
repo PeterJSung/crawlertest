@@ -7,7 +7,7 @@ const penupLink = 'https://www.penup.com/main/home'
 const windowWidth = 1920
 const windowHeight = 1080
 const folderName = `images`
-const MAX_SCROLL = 5;
+const MAX_SCROLL = 2;
 
 fs.readdir(folderName, (err) => {
   if (err) {
@@ -31,7 +31,7 @@ const penupCrawler = async () => {
   let imageList = []
  
   for(let scrollCount = 0; scrollCount < MAX_SCROLL; scrollCount++ ) {
-    await pages.waitFor(3000)
+    await pages.waitForSelector('.grid-item')
     const srcs = await pages.evaluate(() => {
       window.scrollTo(0,0)
       const imageList = []
@@ -53,7 +53,7 @@ const penupCrawler = async () => {
     })
     imageList = imageList.concat(srcs)
   }
-  
+  console.log(imageList)
   imageList.forEach(async (eachUrl) => {
     const imgResult = await axios.get(eachUrl, {
       responseType: 'arraybuffer',
