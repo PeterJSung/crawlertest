@@ -1,0 +1,16 @@
+{
+  "name": "penupcraw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "peterjsung",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.1",
+    "image-type": "^4.1.0",
+    "puppeteer": "^1.13.0"
+  }
+}
